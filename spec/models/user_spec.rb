@@ -9,6 +9,14 @@ RSpec.describe User, type: :model do
       expect(user1.name).to_not eq('')
     end
 
+    it 'check user1s photo is a string' do
+      expect(user1.photo).to eq('https://picsum.photos/200/300')
+    end
+
+    it 'check user1s bio is a string' do
+      expect(user1.bio).to eq('I am Burak')
+    end
+
     it 'check user1s name shorter than 250 characters' do
       expect(user1.name.length < 250).to eq(true)
     end
