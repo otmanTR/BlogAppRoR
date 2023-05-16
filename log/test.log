@@ -13447,3 +13447,906 @@ Processing by UsersController#show as HTML
   Rendered users/show.html.erb (Duration: 0.1ms | Allocations: 16)
 Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 395)
   [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:57:36.042276"], ["updated_at", "2023-05-16 10:57:36.042276"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 453], ["title", "title"], ["text", " Post text 1"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2023-05-16 10:57:36.045819"], ["updated_at", "2023-05-16 10:57:36.045819"]]
+  [1m[36mUser Update All (0.3ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 453]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:57:36.054868"], ["updated_at", "2023-05-16 10:57:36.054868"]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:57:36.106493"], ["updated_at", "2023-05-16 10:57:36.106493"]]
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 455], ["title", "PostTitle1"], ["text", " Post text 1"], ["comments_counter", 0], ["likes_counter", 5], ["created_at", "2023-05-16 10:57:36.108629"], ["updated_at", "2023-05-16 10:57:36.108629"]]
+  [1m[36mUser Update All (0.3ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 455]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Update All (3.8ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 802]]
+  [1m[36mPost Update All (0.4ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 802]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:57:36.122624"], ["updated_at", "2023-05-16 10:57:36.122624"]]
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 456], ["title", "PostTitle1"], ["text", " Post text 1"], ["comments_counter", 6], ["likes_counter", 0], ["created_at", "2023-05-16 10:57:36.124158"], ["updated_at", "2023-05-16 10:57:36.124158"]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 456]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Update All (0.4ms)[0m  [1m[33mUPDATE "posts" SET "likes_counter" = COALESCE("likes_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["likes_counter", 1], ["id", 803]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 0], ["created_at", "2023-05-16 10:57:36.140095"], ["updated_at", "2023-05-16 10:57:36.140095"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 457], ["title", "title"], ["text", " Post text 1"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2023-05-16 10:57:36.142032"], ["updated_at", "2023-05-16 10:57:36.142032"]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 457]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Update All (0.3ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 457]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 457]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:57:36.148235"], ["updated_at", "2023-05-16 10:57:36.148235"]]
+  [1m[36mPost Create (0.2ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 458], ["title", "PostTitle1"], ["text", " Post text 1"], ["comments_counter", 6], ["likes_counter", 5], ["created_at", "2023-05-16 10:57:36.150064"], ["updated_at", "2023-05-16 10:57:36.150064"]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 458]]
+  [1m[36mComment Create (0.7ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 458], ["post_id", 805], ["text", "burakk"], ["created_at", "2023-05-16 10:57:36.151761"], ["updated_at", "2023-05-16 10:57:36.151761"]]
+  [1m[36mPost Update All (0.3ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 805]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 458], ["post_id", 805], ["text", "burakk"], ["created_at", "2023-05-16 10:57:36.155474"], ["updated_at", "2023-05-16 10:57:36.155474"]]
+  [1m[36mPost Update All (0.2ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 805]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 458], ["post_id", 805], ["text", "burakk"], ["created_at", "2023-05-16 10:57:36.158385"], ["updated_at", "2023-05-16 10:57:36.158385"]]
+  [1m[36mPost Update All (0.2ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 805]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 458], ["post_id", 805], ["text", "burakk"], ["created_at", "2023-05-16 10:57:36.160986"], ["updated_at", "2023-05-16 10:57:36.160986"]]
+  [1m[36mPost Update All (0.2ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 805]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 458], ["post_id", 805], ["text", "burakk"], ["created_at", "2023-05-16 10:57:36.163645"], ["updated_at", "2023-05-16 10:57:36.163645"]]
+  [1m[36mPost Update All (0.6ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 805]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 458], ["post_id", 805], ["text", "burakk"], ["created_at", "2023-05-16 10:57:36.167735"], ["updated_at", "2023-05-16 10:57:36.167735"]]
+  [1m[36mPost Update All (0.2ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 805]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 805], ["LIMIT", 5]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:57:36.188364"], ["updated_at", "2023-05-16 10:57:36.188364"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 459], ["LIMIT", 1]]
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 459], ["title", "burak"], ["text", "Burak"], ["comments_counter", 2], ["likes_counter", 2], ["created_at", "2023-05-16 10:57:36.193354"], ["updated_at", "2023-05-16 10:57:36.193354"]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 459]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 459], ["LIMIT", 1]]
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 459], ["title", "burak1"], ["text", "Burak1"], ["comments_counter", 2], ["likes_counter", 2], ["created_at", "2023-05-16 10:57:36.198382"], ["updated_at", "2023-05-16 10:57:36.198382"]]
+  [1m[36mUser Update All (0.4ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 459]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 459], ["LIMIT", 1]]
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 459], ["title", "burak2"], ["text", "Burak2"], ["comments_counter", 2], ["likes_counter", 2], ["created_at", "2023-05-16 10:57:36.203433"], ["updated_at", "2023-05-16 10:57:36.203433"]]
+  [1m[36mUser Update All (0.3ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 459]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 459], ["LIMIT", 1]]
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 459], ["title", "burak3"], ["text", "Burak3"], ["comments_counter", 2], ["likes_counter", 2], ["created_at", "2023-05-16 10:57:36.207502"], ["updated_at", "2023-05-16 10:57:36.207502"]]
+  [1m[36mUser Update All (0.3ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 459]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 459], ["LIMIT", 3]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/user_id/posts" for 127.0.0.1 at 2023-05-16 13:57:36 +0300
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"user_id"}
+  Rendering posts/index.html.erb
+  Rendered posts/index.html.erb (Duration: 0.6ms | Allocations: 452)
+Completed 200 OK in 8ms (Views: 2.6ms | ActiveRecord: 0.0ms | Allocations: 6455)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/user_id/posts" for 127.0.0.1 at 2023-05-16 13:57:36 +0300
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"user_id"}
+  Rendering posts/index.html.erb
+  Rendered posts/index.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 392)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/user_id/posts" for 127.0.0.1 at 2023-05-16 13:57:36 +0300
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"user_id"}
+  Rendering posts/index.html.erb
+  Rendered posts/index.html.erb (Duration: 0.0ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 391)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/453/posts/801" for 127.0.0.1 at 2023-05-16 13:57:36 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"453", "id"=>"801"}
+  Rendering posts/show.html.erb
+  Rendered posts/show.html.erb (Duration: 1.2ms | Allocations: 144)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms | Allocations: 614)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/453/posts/801" for 127.0.0.1 at 2023-05-16 13:57:36 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"453", "id"=>"801"}
+  Rendering posts/show.html.erb
+  Rendered posts/show.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 397)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/453/posts/801" for 127.0.0.1 at 2023-05-16 13:57:36 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"453", "id"=>"801"}
+  Rendering posts/show.html.erb
+  Rendered posts/show.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 397)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users" for 127.0.0.1 at 2023-05-16 13:57:36 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb
+  Rendered users/index.html.erb (Duration: 0.5ms | Allocations: 140)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms | Allocations: 1150)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users" for 127.0.0.1 at 2023-05-16 13:57:36 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb
+  Rendered users/index.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 391)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users" for 127.0.0.1 at 2023-05-16 13:57:36 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb
+  Rendered users/index.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 391)
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/454" for 127.0.0.1 at 2023-05-16 13:57:36 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"454"}
+  Rendering users/show.html.erb
+  Rendered users/show.html.erb (Duration: 0.5ms | Allocations: 144)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 599)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/454" for 127.0.0.1 at 2023-05-16 13:57:36 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"454"}
+  Rendering users/show.html.erb
+  Rendered users/show.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 395)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/454" for 127.0.0.1 at 2023-05-16 13:57:36 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"454"}
+  Rendering users/show.html.erb
+  Rendered users/show.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 395)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:57:48.806009"], ["updated_at", "2023-05-16 10:57:48.806009"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:57:48.810508"], ["updated_at", "2023-05-16 10:57:48.810508"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 461], ["title", "title"], ["text", " Post text 1"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2023-05-16 10:57:48.813712"], ["updated_at", "2023-05-16 10:57:48.813712"]]
+  [1m[36mUser Update All (0.3ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 461]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:57:48.820950"], ["updated_at", "2023-05-16 10:57:48.820950"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:57:48.849694"], ["updated_at", "2023-05-16 10:57:48.849694"]]
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 463], ["title", "PostTitle1"], ["text", " Post text 1"], ["comments_counter", 0], ["likes_counter", 5], ["created_at", "2023-05-16 10:57:48.851509"], ["updated_at", "2023-05-16 10:57:48.851509"]]
+  [1m[36mUser Update All (0.3ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 463]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Update All (0.5ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 811]]
+  [1m[36mPost Update All (0.2ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 811]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:57:48.861606"], ["updated_at", "2023-05-16 10:57:48.861606"]]
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 464], ["title", "PostTitle1"], ["text", " Post text 1"], ["comments_counter", 6], ["likes_counter", 0], ["created_at", "2023-05-16 10:57:48.863144"], ["updated_at", "2023-05-16 10:57:48.863144"]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 464]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Update All (0.3ms)[0m  [1m[33mUPDATE "posts" SET "likes_counter" = COALESCE("likes_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["likes_counter", 1], ["id", 812]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 0], ["created_at", "2023-05-16 10:57:48.879567"], ["updated_at", "2023-05-16 10:57:48.879567"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 465], ["title", "title"], ["text", " Post text 1"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2023-05-16 10:57:48.881602"], ["updated_at", "2023-05-16 10:57:48.881602"]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 465]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Update All (0.4ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 465]]
+  [1m[36mUser Update All (0.3ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 465]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:57:48.887951"], ["updated_at", "2023-05-16 10:57:48.887951"]]
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 466], ["title", "PostTitle1"], ["text", " Post text 1"], ["comments_counter", 6], ["likes_counter", 5], ["created_at", "2023-05-16 10:57:48.889665"], ["updated_at", "2023-05-16 10:57:48.889665"]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 466]]
+  [1m[36mComment Create (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 466], ["post_id", 814], ["text", "burakk"], ["created_at", "2023-05-16 10:57:48.891711"], ["updated_at", "2023-05-16 10:57:48.891711"]]
+  [1m[36mPost Update All (0.3ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 814]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 466], ["post_id", 814], ["text", "burakk"], ["created_at", "2023-05-16 10:57:48.894788"], ["updated_at", "2023-05-16 10:57:48.894788"]]
+  [1m[36mPost Update All (0.3ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 814]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 466], ["post_id", 814], ["text", "burakk"], ["created_at", "2023-05-16 10:57:48.898953"], ["updated_at", "2023-05-16 10:57:48.898953"]]
+  [1m[36mPost Update All (0.4ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 814]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 466], ["post_id", 814], ["text", "burakk"], ["created_at", "2023-05-16 10:57:48.903608"], ["updated_at", "2023-05-16 10:57:48.903608"]]
+  [1m[36mPost Update All (0.5ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 814]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 466], ["post_id", 814], ["text", "burakk"], ["created_at", "2023-05-16 10:57:48.908564"], ["updated_at", "2023-05-16 10:57:48.908564"]]
+  [1m[36mPost Update All (0.3ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 814]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 466], ["post_id", 814], ["text", "burakk"], ["created_at", "2023-05-16 10:57:48.912787"], ["updated_at", "2023-05-16 10:57:48.912787"]]
+  [1m[36mPost Update All (0.2ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 814]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 814], ["LIMIT", 5]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (2.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:57:48.936554"], ["updated_at", "2023-05-16 10:57:48.936554"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 467], ["LIMIT", 1]]
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 467], ["title", "burak"], ["text", "Burak"], ["comments_counter", 2], ["likes_counter", 2], ["created_at", "2023-05-16 10:57:48.943490"], ["updated_at", "2023-05-16 10:57:48.943490"]]
+  [1m[36mUser Update All (0.7ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 467]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 467], ["LIMIT", 1]]
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 467], ["title", "burak1"], ["text", "Burak1"], ["comments_counter", 2], ["likes_counter", 2], ["created_at", "2023-05-16 10:57:48.948255"], ["updated_at", "2023-05-16 10:57:48.948255"]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 467]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 467], ["LIMIT", 1]]
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 467], ["title", "burak2"], ["text", "Burak2"], ["comments_counter", 2], ["likes_counter", 2], ["created_at", "2023-05-16 10:57:48.952101"], ["updated_at", "2023-05-16 10:57:48.952101"]]
+  [1m[36mUser Update All (0.4ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 467]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 467], ["LIMIT", 1]]
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 467], ["title", "burak3"], ["text", "Burak3"], ["comments_counter", 2], ["likes_counter", 2], ["created_at", "2023-05-16 10:57:48.957776"], ["updated_at", "2023-05-16 10:57:48.957776"]]
+  [1m[36mUser Update All (0.3ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 467]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 467], ["LIMIT", 3]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/user_id/posts" for 127.0.0.1 at 2023-05-16 13:57:48 +0300
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"user_id"}
+  Rendering posts/index.html.erb
+  Rendered posts/index.html.erb (Duration: 0.7ms | Allocations: 452)
+Completed 200 OK in 9ms (Views: 2.8ms | ActiveRecord: 0.0ms | Allocations: 6455)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/user_id/posts" for 127.0.0.1 at 2023-05-16 13:57:49 +0300
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"user_id"}
+  Rendering posts/index.html.erb
+  Rendered posts/index.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 392)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/user_id/posts" for 127.0.0.1 at 2023-05-16 13:57:49 +0300
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"user_id"}
+  Rendering posts/index.html.erb
+  Rendered posts/index.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 391)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/461/posts/810" for 127.0.0.1 at 2023-05-16 13:57:49 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"461", "id"=>"810"}
+  Rendering posts/show.html.erb
+  Rendered posts/show.html.erb (Duration: 0.4ms | Allocations: 144)
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 614)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/461/posts/810" for 127.0.0.1 at 2023-05-16 13:57:49 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"461", "id"=>"810"}
+  Rendering posts/show.html.erb
+  Rendered posts/show.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 397)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/461/posts/810" for 127.0.0.1 at 2023-05-16 13:57:49 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"461", "id"=>"810"}
+  Rendering posts/show.html.erb
+  Rendered posts/show.html.erb (Duration: 0.2ms | Allocations: 16)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 397)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users" for 127.0.0.1 at 2023-05-16 13:57:49 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb
+  Rendered users/index.html.erb (Duration: 0.4ms | Allocations: 140)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms | Allocations: 1150)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users" for 127.0.0.1 at 2023-05-16 13:57:49 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb
+  Rendered users/index.html.erb (Duration: 0.0ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 391)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users" for 127.0.0.1 at 2023-05-16 13:57:49 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb
+  Rendered users/index.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 391)
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/462" for 127.0.0.1 at 2023-05-16 13:57:49 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"462"}
+  Rendering users/show.html.erb
+  Rendered users/show.html.erb (Duration: 0.4ms | Allocations: 144)
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 599)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/462" for 127.0.0.1 at 2023-05-16 13:57:49 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"462"}
+  Rendering users/show.html.erb
+  Rendered users/show.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 395)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/462" for 127.0.0.1 at 2023-05-16 13:57:49 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"462"}
+  Rendering users/show.html.erb
+  Rendered users/show.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 395)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:58:10.447786"], ["updated_at", "2023-05-16 10:58:10.447786"]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 468], ["title", "title"], ["text", " Post text 1"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2023-05-16 10:58:10.452333"], ["updated_at", "2023-05-16 10:58:10.452333"]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 468]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:58:10.460810"], ["updated_at", "2023-05-16 10:58:10.460810"]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:58:10.485413"], ["updated_at", "2023-05-16 10:58:10.485413"]]
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 470], ["title", "PostTitle1"], ["text", " Post text 1"], ["comments_counter", 0], ["likes_counter", 5], ["created_at", "2023-05-16 10:58:10.486799"], ["updated_at", "2023-05-16 10:58:10.486799"]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 470]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Update All (0.3ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 820]]
+  [1m[36mPost Update All (0.3ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 820]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:58:10.493711"], ["updated_at", "2023-05-16 10:58:10.493711"]]
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 471], ["title", "PostTitle1"], ["text", " Post text 1"], ["comments_counter", 6], ["likes_counter", 0], ["created_at", "2023-05-16 10:58:10.495093"], ["updated_at", "2023-05-16 10:58:10.495093"]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 471]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Update All (0.3ms)[0m  [1m[33mUPDATE "posts" SET "likes_counter" = COALESCE("likes_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["likes_counter", 1], ["id", 821]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 0], ["created_at", "2023-05-16 10:58:10.509286"], ["updated_at", "2023-05-16 10:58:10.509286"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.2ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 472], ["title", "title"], ["text", " Post text 1"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2023-05-16 10:58:10.511326"], ["updated_at", "2023-05-16 10:58:10.511326"]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 472]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 472]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 472]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:58:10.517233"], ["updated_at", "2023-05-16 10:58:10.517233"]]
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 473], ["title", "PostTitle1"], ["text", " Post text 1"], ["comments_counter", 6], ["likes_counter", 5], ["created_at", "2023-05-16 10:58:10.518589"], ["updated_at", "2023-05-16 10:58:10.518589"]]
+  [1m[36mUser Update All (0.4ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 473]]
+  [1m[36mComment Create (0.6ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 473], ["post_id", 823], ["text", "burakk"], ["created_at", "2023-05-16 10:58:10.521201"], ["updated_at", "2023-05-16 10:58:10.521201"]]
+  [1m[36mPost Update All (0.3ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 823]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 473], ["post_id", 823], ["text", "burakk"], ["created_at", "2023-05-16 10:58:10.524264"], ["updated_at", "2023-05-16 10:58:10.524264"]]
+  [1m[36mPost Update All (2.2ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 823]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 473], ["post_id", 823], ["text", "burakk"], ["created_at", "2023-05-16 10:58:10.528872"], ["updated_at", "2023-05-16 10:58:10.528872"]]
+  [1m[36mPost Update All (0.3ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 823]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 473], ["post_id", 823], ["text", "burakk"], ["created_at", "2023-05-16 10:58:10.532057"], ["updated_at", "2023-05-16 10:58:10.532057"]]
+  [1m[36mPost Update All (0.2ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 823]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 473], ["post_id", 823], ["text", "burakk"], ["created_at", "2023-05-16 10:58:10.534987"], ["updated_at", "2023-05-16 10:58:10.534987"]]
+  [1m[36mPost Update All (0.4ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 823]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 473], ["post_id", 823], ["text", "burakk"], ["created_at", "2023-05-16 10:58:10.538172"], ["updated_at", "2023-05-16 10:58:10.538172"]]
+  [1m[36mPost Update All (0.4ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 823]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 823], ["LIMIT", 5]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:58:10.557975"], ["updated_at", "2023-05-16 10:58:10.557975"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 474], ["LIMIT", 1]]
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 474], ["title", "burak"], ["text", "Burak"], ["comments_counter", 2], ["likes_counter", 2], ["created_at", "2023-05-16 10:58:10.562251"], ["updated_at", "2023-05-16 10:58:10.562251"]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 474]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 474], ["LIMIT", 1]]
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 474], ["title", "burak1"], ["text", "Burak1"], ["comments_counter", 2], ["likes_counter", 2], ["created_at", "2023-05-16 10:58:10.566578"], ["updated_at", "2023-05-16 10:58:10.566578"]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 474]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 474], ["LIMIT", 1]]
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 474], ["title", "burak2"], ["text", "Burak2"], ["comments_counter", 2], ["likes_counter", 2], ["created_at", "2023-05-16 10:58:10.570586"], ["updated_at", "2023-05-16 10:58:10.570586"]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 474]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 474], ["LIMIT", 1]]
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 474], ["title", "burak3"], ["text", "Burak3"], ["comments_counter", 2], ["likes_counter", 2], ["created_at", "2023-05-16 10:58:10.574201"], ["updated_at", "2023-05-16 10:58:10.574201"]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 474]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 474], ["LIMIT", 3]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/user_id/posts" for 127.0.0.1 at 2023-05-16 13:58:10 +0300
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"user_id"}
+  Rendering posts/index.html.erb
+  Rendered posts/index.html.erb (Duration: 0.7ms | Allocations: 452)
+Completed 200 OK in 7ms (Views: 2.9ms | ActiveRecord: 0.0ms | Allocations: 6455)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/user_id/posts" for 127.0.0.1 at 2023-05-16 13:58:10 +0300
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"user_id"}
+  Rendering posts/index.html.erb
+  Rendered posts/index.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 392)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/user_id/posts" for 127.0.0.1 at 2023-05-16 13:58:10 +0300
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"user_id"}
+  Rendering posts/index.html.erb
+  Rendered posts/index.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 391)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/468/posts/819" for 127.0.0.1 at 2023-05-16 13:58:10 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"468", "id"=>"819"}
+  Rendering posts/show.html.erb
+  Rendered posts/show.html.erb (Duration: 0.4ms | Allocations: 144)
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 614)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/468/posts/819" for 127.0.0.1 at 2023-05-16 13:58:10 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"468", "id"=>"819"}
+  Rendering posts/show.html.erb
+  Rendered posts/show.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 397)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/468/posts/819" for 127.0.0.1 at 2023-05-16 13:58:10 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"468", "id"=>"819"}
+  Rendering posts/show.html.erb
+  Rendered posts/show.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 397)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users" for 127.0.0.1 at 2023-05-16 13:58:10 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb
+  Rendered users/index.html.erb (Duration: 0.5ms | Allocations: 140)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms | Allocations: 1150)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users" for 127.0.0.1 at 2023-05-16 13:58:10 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb
+  Rendered users/index.html.erb (Duration: 0.0ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 391)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users" for 127.0.0.1 at 2023-05-16 13:58:10 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb
+  Rendered users/index.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 391)
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/469" for 127.0.0.1 at 2023-05-16 13:58:10 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"469"}
+  Rendering users/show.html.erb
+  Rendered users/show.html.erb (Duration: 0.4ms | Allocations: 144)
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 599)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/469" for 127.0.0.1 at 2023-05-16 13:58:10 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"469"}
+  Rendering users/show.html.erb
+  Rendered users/show.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 395)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/469" for 127.0.0.1 at 2023-05-16 13:58:10 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"469"}
+  Rendering users/show.html.erb
+  Rendered users/show.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 395)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:58:25.380357"], ["updated_at", "2023-05-16 10:58:25.380357"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 475], ["title", "title"], ["text", " Post text 1"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2023-05-16 10:58:25.383762"], ["updated_at", "2023-05-16 10:58:25.383762"]]
+  [1m[36mUser Update All (0.4ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 475]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:58:25.391199"], ["updated_at", "2023-05-16 10:58:25.391199"]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:58:25.442793"], ["updated_at", "2023-05-16 10:58:25.442793"]]
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 477], ["title", "PostTitle1"], ["text", " Post text 1"], ["comments_counter", 0], ["likes_counter", 5], ["created_at", "2023-05-16 10:58:25.444935"], ["updated_at", "2023-05-16 10:58:25.444935"]]
+  [1m[36mUser Update All (0.4ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 477]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Update All (0.7ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 829]]
+  [1m[36mPost Update All (0.5ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 829]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:58:25.463752"], ["updated_at", "2023-05-16 10:58:25.463752"]]
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 478], ["title", "PostTitle1"], ["text", " Post text 1"], ["comments_counter", 6], ["likes_counter", 0], ["created_at", "2023-05-16 10:58:25.465505"], ["updated_at", "2023-05-16 10:58:25.465505"]]
+  [1m[36mUser Update All (0.3ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 478]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Update All (0.5ms)[0m  [1m[33mUPDATE "posts" SET "likes_counter" = COALESCE("likes_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["likes_counter", 1], ["id", 830]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 0], ["created_at", "2023-05-16 10:58:25.480632"], ["updated_at", "2023-05-16 10:58:25.480632"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.2ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 479], ["title", "title"], ["text", " Post text 1"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2023-05-16 10:58:25.482389"], ["updated_at", "2023-05-16 10:58:25.482389"]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 479]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Update All (0.3ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 479]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 479]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:58:25.488670"], ["updated_at", "2023-05-16 10:58:25.488670"]]
+  [1m[36mPost Create (0.2ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 480], ["title", "PostTitle1"], ["text", " Post text 1"], ["comments_counter", 6], ["likes_counter", 5], ["created_at", "2023-05-16 10:58:25.490158"], ["updated_at", "2023-05-16 10:58:25.490158"]]
+  [1m[36mUser Update All (0.3ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 480]]
+  [1m[36mComment Create (1.8ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 480], ["post_id", 832], ["text", "burakk"], ["created_at", "2023-05-16 10:58:25.492023"], ["updated_at", "2023-05-16 10:58:25.492023"]]
+  [1m[36mPost Update All (0.2ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 832]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 480], ["post_id", 832], ["text", "burakk"], ["created_at", "2023-05-16 10:58:25.496624"], ["updated_at", "2023-05-16 10:58:25.496624"]]
+  [1m[36mPost Update All (0.3ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 832]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 480], ["post_id", 832], ["text", "burakk"], ["created_at", "2023-05-16 10:58:25.499521"], ["updated_at", "2023-05-16 10:58:25.499521"]]
+  [1m[36mPost Update All (0.2ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 832]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 480], ["post_id", 832], ["text", "burakk"], ["created_at", "2023-05-16 10:58:25.502093"], ["updated_at", "2023-05-16 10:58:25.502093"]]
+  [1m[36mPost Update All (0.4ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 832]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.6ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 480], ["post_id", 832], ["text", "burakk"], ["created_at", "2023-05-16 10:58:25.505942"], ["updated_at", "2023-05-16 10:58:25.505942"]]
+  [1m[36mPost Update All (0.4ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 832]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 480], ["post_id", 832], ["text", "burakk"], ["created_at", "2023-05-16 10:58:25.509377"], ["updated_at", "2023-05-16 10:58:25.509377"]]
+  [1m[36mPost Update All (0.4ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 832]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 832], ["LIMIT", 5]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burak"], ["photo", "https://picsum.photos/200/300"], ["bio", "I am Burak"], ["posts_counter", 4], ["created_at", "2023-05-16 10:58:25.531907"], ["updated_at", "2023-05-16 10:58:25.531907"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 481], ["LIMIT", 1]]
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 481], ["title", "burak"], ["text", "Burak"], ["comments_counter", 2], ["likes_counter", 2], ["created_at", "2023-05-16 10:58:25.536753"], ["updated_at", "2023-05-16 10:58:25.536753"]]
+  [1m[36mUser Update All (0.3ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 481]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 481], ["LIMIT", 1]]
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 481], ["title", "burak1"], ["text", "Burak1"], ["comments_counter", 2], ["likes_counter", 2], ["created_at", "2023-05-16 10:58:25.542283"], ["updated_at", "2023-05-16 10:58:25.542283"]]
+  [1m[36mUser Update All (0.3ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 481]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 481], ["LIMIT", 1]]
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 481], ["title", "burak2"], ["text", "Burak2"], ["comments_counter", 2], ["likes_counter", 2], ["created_at", "2023-05-16 10:58:25.546566"], ["updated_at", "2023-05-16 10:58:25.546566"]]
+  [1m[36mUser Update All (0.2ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 481]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 481], ["LIMIT", 1]]
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 481], ["title", "burak3"], ["text", "Burak3"], ["comments_counter", 2], ["likes_counter", 2], ["created_at", "2023-05-16 10:58:25.550454"], ["updated_at", "2023-05-16 10:58:25.550454"]]
+  [1m[36mUser Update All (0.4ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 481]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 481], ["LIMIT", 3]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/user_id/posts" for 127.0.0.1 at 2023-05-16 13:58:25 +0300
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"user_id"}
+  Rendering posts/index.html.erb
+  Rendered posts/index.html.erb (Duration: 0.6ms | Allocations: 452)
+Completed 200 OK in 7ms (Views: 2.6ms | ActiveRecord: 0.0ms | Allocations: 6455)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/user_id/posts" for 127.0.0.1 at 2023-05-16 13:58:25 +0300
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"user_id"}
+  Rendering posts/index.html.erb
+  Rendered posts/index.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 392)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/user_id/posts" for 127.0.0.1 at 2023-05-16 13:58:25 +0300
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"user_id"}
+  Rendering posts/index.html.erb
+  Rendered posts/index.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 391)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/475/posts/828" for 127.0.0.1 at 2023-05-16 13:58:25 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"475", "id"=>"828"}
+  Rendering posts/show.html.erb
+  Rendered posts/show.html.erb (Duration: 0.5ms | Allocations: 144)
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 614)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/475/posts/828" for 127.0.0.1 at 2023-05-16 13:58:25 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"475", "id"=>"828"}
+  Rendering posts/show.html.erb
+  Rendered posts/show.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 397)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/475/posts/828" for 127.0.0.1 at 2023-05-16 13:58:25 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"475", "id"=>"828"}
+  Rendering posts/show.html.erb
+  Rendered posts/show.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 397)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users" for 127.0.0.1 at 2023-05-16 13:58:25 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb
+  Rendered users/index.html.erb (Duration: 0.3ms | Allocations: 140)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 1150)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users" for 127.0.0.1 at 2023-05-16 13:58:25 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb
+  Rendered users/index.html.erb (Duration: 0.0ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 391)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users" for 127.0.0.1 at 2023-05-16 13:58:25 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb
+  Rendered users/index.html.erb (Duration: 0.0ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 391)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/476" for 127.0.0.1 at 2023-05-16 13:58:25 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"476"}
+  Rendering users/show.html.erb
+  Rendered users/show.html.erb (Duration: 0.5ms | Allocations: 144)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 599)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/476" for 127.0.0.1 at 2023-05-16 13:58:25 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"476"}
+  Rendering users/show.html.erb
+  Rendered users/show.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 395)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/users/476" for 127.0.0.1 at 2023-05-16 13:58:25 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"476"}
+  Rendering users/show.html.erb
+  Rendered users/show.html.erb (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 395)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
