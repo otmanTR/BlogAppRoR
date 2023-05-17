@@ -13,3 +13,81 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 70%;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+}
+
+.user-container {
+  border-radius: 1px;
+  border: solid black;
+  padding: 5px 5px 5px 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5px 5px 5px 15px;
+  align-items: center;
+  align-content: center;
+  width: 70%;
+}
+
+.user-post-counter {
+  margin-left: 150px;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.photo {
+  border: solid black;
+  padding: 5px 5px 5px 5px;
+}
+
+.user-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: solid black;
+  padding: 5px 5px 5px 5px;
+  margin: 5px 0 5px 10px;
+  width: 100%;
+}
+
+.bio {
+  border: solid black;
+  padding: 5px 5px 5px 5px;
+  margin: 5px 0 5px 0;
+}
+
+.post {
+  border: solid black;
+  padding: 5px 5px 5px 5px;
+  margin: 5px 0 5px 0;
+}
+
+.photo-user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.comment {
+  border: solid black;
+  padding: 5px 5px 5px 5px;
+  margin: 5px 0 5px 0;
+}
+
+.comment-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

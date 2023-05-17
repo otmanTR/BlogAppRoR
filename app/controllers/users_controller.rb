@@ -7,6 +7,3 @@ class UsersController < ActionController::Base
     @user = User.find(params[:id])
   end
 end
-
-
-

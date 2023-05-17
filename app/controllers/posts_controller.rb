@@ -6,5 +6,6 @@ class PostsController < ActionController::Base
 
   def show
     @post = Post.find(params[:id])
+    @user = User.find(params[:user_id])
   end
 end

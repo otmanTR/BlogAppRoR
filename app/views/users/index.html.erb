@@ -1,7 +1,21 @@
+<head>
+  <link rel="stylesheet" href="<%= asset_path('application.css') %>">
+</head>
+
+
 <% @users.each do |user| %>
+<div class="main-container">
+  <div class='user_img'>
+          <img src= <%= user.photo %>  />
+        </div>
+<div class="user-container">
+
 <h2><%= link_to user.name, user_path(user) %><br></h2>
  <p>
   
   Number of posts:  <%= user.posts_counter %>
    </p>
+   </div>
+   </div>
+ 
 <% end %>
