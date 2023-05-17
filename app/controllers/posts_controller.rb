@@ -4,6 +4,6 @@ class PostsController < ActionController::Base
   end
 
   def show
-    puts params
+    @post = Post.find(params[:id])
   end
 end

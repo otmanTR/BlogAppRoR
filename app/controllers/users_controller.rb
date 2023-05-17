@@ -4,6 +4,10 @@ class UsersController < ActionController::Base
   end
 
   def show
-    puts params
+    @user = User.find(params[:id])
+    @posts = @user.recent_three_posts
   end
 end
+
+
+
