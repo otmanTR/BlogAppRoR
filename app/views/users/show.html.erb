@@ -1,1 +1,28 @@
-<h1>Here your user with id</h1>
+<head>
+  <link rel="stylesheet" href="<%= asset_path('application.css') %>">
+</head>
+<div class= "photo-user">
+    <div >
+      <img class='user_img' src= <%= @user.photo %> width="50" height="70"  />
+    </div>
+<div class="user-card">
+<h1><%= @user.name  %></h1>
+<p>Number of posts:  <%= @user.posts_counter %> </p> 
+</div>
+</div>
+<div class="bio">
+<h2>Bio</h2>
+<p><span><%= @user.bio %></p>
+</div>
+<div>
+<% @user.recent_three_posts.each do |post| %>
+<div class="post">
+  <h2>Post :<%= link_to post.title, user_post_path(@user, post) %></h2>
+  <p><%= post.text %> </p>
+ <p class="posts-comment-like"> Comments:  <%= post.comments_counter %> Likes:  <%= post.likes_counter %>
+  </p>
+  </div>
+<% end %>
+
+</div>
+<a class="all-posts" href="<%= @user.id %>/posts">See all posts</a>

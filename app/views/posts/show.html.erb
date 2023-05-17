@@ -1,1 +1,22 @@
-<h1>Here your post with post_id and user_id</h1>
+<head>
+  <link rel="stylesheet" href="<%= asset_path('application.css') %>">
+</head>
+<div class="post">
+<div class="post-comment-like">
+ <h2> <%= @post.title  %> #<%= @post.id  %> by <%= @post.author.name  %> </h2>
+  <p class="comment-like">
+   Comments:<%= @post.comments_counter %> Likes:  <%= @post.likes_counter %>
+   </p>
+   </div>
+     <p>
+  <%= @post.text %> 
+   </p>
+   </div>
+   <div class="comment">
+   <% @post.comments.each do |comment| %>
+   <div class="comment-container">
+  <p><%= comment.author.name %>-</p>
+  <p> <%= comment.text %> </p>
+  </div>
+<% end %>
+</div>

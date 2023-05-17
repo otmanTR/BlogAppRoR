@@ -1,1 +1,32 @@
-<h1>Here your posts list with user_id </h1>
+<head>
+  <link rel="stylesheet" href="<%= asset_path('application.css') %>">
+</head>
+
+<div class= "photo-user">
+    <div class='user_img'>
+      <img  src= <%= @user.photo %> width="50" height="70" />
+    </div>
+<div class="user-card">
+<h1><%= @user.name  %></h1>
+<p>Number of posts:  <%= @user.posts_counter %> </p> 
+</div>
+</div>
+<% @user.posts.each_with_index do |post, index| %>
+<div class="post">
+<h2>Post- <%= link_to post.title, user_post_path(@user, post) %><br></h2>
+ <p> <%= post.text %>
+ </p>
+ <p class="posts-comment-like">
+  Comments:  <%= post.comments_counter %> Likes:  <%= post.likes_counter %>
+   </p>
+   </div>
+   <div class="comment">
+<% post.recent_five_comments.each do |comment| %>
+<div class="comment-container">
+  <p><%= comment.author.name     %>  - </h2>
+  <p>    <%= comment.text%> </p>
+  </div>
+<% end %>
+</div>
+<% end %>
+  <a class="all-posts" href="#">Pagination</a>
