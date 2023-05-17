@@ -1,1 +1,14 @@
-<h1>Here your posts list with user_id </h1>
+
+
+<% @user.posts.each_with_index do |post, index| %>
+ <h2> <%= post.author.name %><br> </h2>
+<h2>Post- <%= link_to post.title, user_post_path(@user, post) %><br></h2>
+ <p>
+  Comments:  <%= post.comments_counter %> <br> Likes:  <%= post.likes_counter %>
+   </p>
+   <div>
+<% post.recent_five_comments.each do |comment| %>
+  <h2>Comment-<%= comment.author.name %></h2>
+  <p>comment number: <%= comment.id %> </p>
+<% end %>
+<% end %>

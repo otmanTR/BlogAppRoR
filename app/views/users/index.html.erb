@@ -1,8 +1,7 @@
-<h1>Here your users list</h1>
-
 <% @users.each do |user| %>
+<h2><%= link_to user.name, user_path(user) %><br></h2>
  <p>
-  Name: <%= user.name %><br>
+  
   Number of posts:  <%= user.posts_counter %>
    </p>
 <% end %>

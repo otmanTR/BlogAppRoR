@@ -1,6 +1,15 @@
-<h1><%= @user.name %></h1>
-<p><%= @user.bio %></p>
-
-<% @posts.each do |post| %>
-  <p><%= post.title %></p>
+<div>
+<h1><%= @user.name  %></h1>
+<p>Number of posts:  <%= @user.posts_counter %> </p> 
+</div>
+<div>
+<h2>Bio</h2>
+<p><span><%= @user.bio %></p>
+</div>
+<div>
+<% @user.recent_three_posts.each do |post| %>
+  <h2>Post :<%= link_to post.title, user_post_path(@user, post) %></h2>
+  <p><%= post.text %> </p>
 <% end %>
+</div>
+<a href="<%= @user.id %>/posts">See all posts</a>
