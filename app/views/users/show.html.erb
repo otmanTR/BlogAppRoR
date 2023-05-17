@@ -2,8 +2,8 @@
   <link rel="stylesheet" href="<%= asset_path('application.css') %>">
 </head>
 <div class= "photo-user">
-    <div class='user_img'>
-      <img src= <%= @user.photo %>  />
+    <div >
+      <img class='user_img' src= <%= @user.photo %> width="50" height="70"  />
     </div>
 <div class="user-card">
 <h1><%= @user.name  %></h1>
@@ -19,9 +19,10 @@
 <div class="post">
   <h2>Post :<%= link_to post.title, user_post_path(@user, post) %></h2>
   <p><%= post.text %> </p>
-  Comments:  <%= post.comments_counter %> <br> Likes:  <%= post.likes_counter %>
+ <p class="posts-comment-like"> Comments:  <%= post.comments_counter %> Likes:  <%= post.likes_counter %>
+  </p>
   </div>
 <% end %>
 
 </div>
-<a href="<%= @user.id %>/posts">See all posts</a>
+<a class="all-posts" href="<%= @user.id %>/posts">See all posts</a>

@@ -4,7 +4,7 @@
 
 <div class= "photo-user">
     <div class='user_img'>
-      <img src= <%= @user.photo %>  />
+      <img  src= <%= @user.photo %> width="50" height="70" />
     </div>
 <div class="user-card">
 <h1><%= @user.name  %></h1>
@@ -16,16 +16,17 @@
 <h2>Post- <%= link_to post.title, user_post_path(@user, post) %><br></h2>
  <p> <%= post.text %>
  </p>
- <p>
-  Comments:  <%= post.comments_counter %> <br> Likes:  <%= post.likes_counter %>
+ <p class="posts-comment-like">
+  Comments:  <%= post.comments_counter %> Likes:  <%= post.likes_counter %>
    </p>
    </div>
    <div class="comment">
 <% post.recent_five_comments.each do |comment| %>
 <div class="comment-container">
-  <p>Commenter-<%= comment.author.name     %>  - </h2>
-  <p>   - comment number: <%= comment.id %> </p>
+  <p><%= comment.author.name     %>  - </h2>
+  <p>    <%= comment.text%> </p>
   </div>
 <% end %>
 </div>
 <% end %>
+  <a class="all-posts" href="#">Pagination</a>

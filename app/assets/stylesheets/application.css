@@ -37,6 +37,11 @@ body {
   width: 70%;
 }
 
+.user_img {
+  border: 1px solid #d3d3d3;
+  height: 50px;
+}
+
 .user-post-counter {
   margin-left: 150px;
 }
@@ -90,4 +95,23 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.post-comment-like {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.comment-like {
+  margin-top: 50px;
+}
+
+.posts-comment-like {
+  margin-left: 70%;
+}
+
+.all-posts {
+  margin-top: 40px;
+  margin-left: 40%;
 }

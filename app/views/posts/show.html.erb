@@ -2,10 +2,12 @@
   <link rel="stylesheet" href="<%= asset_path('application.css') %>">
 </head>
 <div class="post">
+<div class="post-comment-like">
  <h2> <%= @post.title  %> #<%= @post.id  %> by <%= @post.author.name  %> </h2>
-  <p>
-  Comments:  <%= @post.comments_counter %> <br> Likes:  <%= @post.likes_counter %>
+  <p class="comment-like">
+   Comments:<%= @post.comments_counter %> Likes:  <%= @post.likes_counter %>
    </p>
+   </div>
      <p>
   <%= @post.text %> 
    </p>
@@ -13,8 +15,8 @@
    <div class="comment">
    <% @post.comments.each do |comment| %>
    <div class="comment-container">
-  <p>Commenter-<%= comment.author.name %>-</p>
-  <p>comment number: <%= comment.id %> </p>
+  <p><%= comment.author.name %>-</p>
+  <p> <%= comment.text %> </p>
   </div>
 <% end %>
 </div>
