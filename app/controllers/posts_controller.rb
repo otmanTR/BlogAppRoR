@@ -18,8 +18,7 @@ class PostsController < ApplicationController
       
       redirect_to "/users/#{current_user.id}/posts", notice: 'Post created successfully!'
     else
-      notice: 'Post could not be created.'
-      render :new
+      render :new, notice: 'Post could not be created.'
     end
   end
 

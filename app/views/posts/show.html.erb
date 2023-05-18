@@ -7,6 +7,9 @@
   <p class="comment-like">
    Comments:<%= @post.comments_counter %> Likes:  <%= @post.likes_counter %>
    </p>
+   <button class="page-btn">
+        <%= link_to 'Create New Comment', new_user_post_comment_path(@post.author, @post), style: 'color: black; text-decoration: none;' %>
+    </button>
    </div>
      <p>
   <%= @post.text %> 
