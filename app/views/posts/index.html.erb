@@ -10,13 +10,14 @@
 <h1><%= @user.name  %></h1>
 <p>Number of posts:  <%= @user.posts_counter %> </p> 
 </div>
-  <div class="page-description">
-    <h3> List of previous Posts:</h3>
-    <button class="page-btn">
+</div>
+ <button class="page-btn">
         <%= link_to 'Create New Post', new_user_post_path(@user), style: 'color: black; text-decoration: none;' %>
     </button>
+  <div class="page-description">
+    <h3> List of previous Posts:</h3>
+   
     </div>
-</div>
 <% @user.posts.each_with_index do |post, index| %>
 <div class="post">
 <h2>Post- <%= link_to post.title, user_post_path(@user, post) %><br></h2>

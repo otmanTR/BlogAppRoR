@@ -115,3 +115,15 @@ body {
   margin-top: 40px;
   margin-left: 40%;
 }
+
+.page-description {
+  border: solid black;
+  padding: 5px 5px 5px 5px;
+  margin: 5px 0 5px 0;
+}
+
+.page-btn {
+  border: solid black;
+  padding: 5px 5px 5px 5px;
+  margin: 5px 0 5px 0;
+}

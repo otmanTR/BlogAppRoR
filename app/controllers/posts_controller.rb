@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   end
 
   def new
- @post = Post.new
+    @post = Post.new
   end
 
   def create
@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     @post.author = current_user
 
     if @post.save
-      
+
       redirect_to "/users/#{current_user.id}/posts", notice: 'Post created successfully!'
     else
       render :new, notice: 'Post could not be created.'
