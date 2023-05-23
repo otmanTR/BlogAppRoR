@@ -2,20 +2,23 @@ require 'rails_helper'
 
 RSpec.describe 'Posts', type: :request do
   describe 'GET /users/id/posts/index' do
+    before(:each) do
+      user = User.create!(name: 'Burak', photo: 'https://img.i.com/2.jpg', bio: 'Hey I am Burak.',
+                          posts_counter: 1)
+      get "/users/#{user.id}/posts"
+    end
+    
     it 'check if it brings success response' do
-      get user_posts_path(:user_id)
 
       expect(response).to be_successful
     end
 
     it 'renders the index template' do
-      get user_posts_path(:user_id)
       expect(response).to render_template('index')
     end
 
     it 'check the response body includes correct placeholder text' do
-      get user_posts_path(:user_id)
-      expect(response.body).to include('<h1>Here your posts list with user_id </h1>')
+      expect(response.body).to include('<h1>Here your posts list with user_id</h1>')
     end
   end
 
