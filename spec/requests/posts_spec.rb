@@ -7,9 +7,8 @@ RSpec.describe 'Posts', type: :request do
                           posts_counter: 1)
       get "/users/#{user.id}/posts"
     end
-    
-    it 'check if it brings success response' do
 
+    it 'check if it brings success response' do
       expect(response).to be_successful
     end
 
