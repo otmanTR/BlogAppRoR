@@ -32763,3 +32763,1486 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 107ms (Views: 87.5ms | ActiveRecord: 15.0ms | Allocations: 48477)
 
 
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8408248727925156390)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDeviseToUsers (20230523123833)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "users" ADD "email" character varying DEFAULT '' NOT NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "encrypted_password" character varying DEFAULT '' NOT NULL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_sent_at" timestamp(6)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "remember_created_at" timestamp(6)[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8408248727925156390)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (5012.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "BlogAppRoR_development"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (41.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "BlogAppRoR_development"[0m
+  [1m[35m (45.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "BlogAppRoR_test"[0m
+  [1m[35m (172.5ms)[0m  [1m[35mCREATE DATABASE "BlogAppRoR_development" ENCODING = 'unicode'[0m
+  [1m[35m (98.2ms)[0m  [1m[35mCREATE DATABASE "BlogAppRoR_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  [1m[35m (14.4ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "author_id" bigint NOT NULL, "post_id" bigint NOT NULL, "text" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE INDEX "index_comments_on_author_id" ON "comments" ("author_id")[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE INDEX "index_comments_on_post_id" ON "comments" ("post_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "likes" CASCADE[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "author_id" bigint NOT NULL, "post_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (9.6ms)[0m  [1m[35mCREATE INDEX "index_likes_on_author_id" ON "likes" ("author_id")[0m
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE INDEX "index_likes_on_post_id" ON "likes" ("post_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "posts" CASCADE[0m
+  [1m[35m (12.3ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "author_id" bigint NOT NULL, "title" character varying, "text" text, "comments_counter" integer, "likes_counter" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (14.3ms)[0m  [1m[35mCREATE INDEX "index_posts_on_author_id" ON "posts" ("author_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (10.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "photo" character varying, "bio" text, "posts_counter" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (4.3ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_2fd19c0db7"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+[0m
+  [1m[35m (3.5ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_f44b1e3c8a"
+FOREIGN KEY ("author_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.4ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_87a8aac469"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+[0m
+  [1m[35m (3.1ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_1f2302367a"
+FOREIGN KEY ("author_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.8ms)[0m  [1m[35mALTER TABLE "posts" ADD CONSTRAINT "fk_rails_04d13ef8c7"
+FOREIGN KEY ("author_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (10.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20230510075720)[0m
+  [1m[35m (1.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20230510075130),
+(20230510075327),
+(20230510075612);
+
+[0m
+  [1m[35m (14.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (2.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-05-23 16:17:47.227778"], ["updated_at", "2023-05-23 16:17:47.227778"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "c1a0ef803716ac81f196e885b8d5d53796d7b26f"], ["created_at", "2023-05-23 16:17:47.246046"], ["updated_at", "2023-05-23 16:17:47.246046"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  [1m[35m (13.3ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "author_id" bigint NOT NULL, "post_id" bigint NOT NULL, "text" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE INDEX "index_comments_on_author_id" ON "comments" ("author_id")[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE INDEX "index_comments_on_post_id" ON "comments" ("post_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "likes" CASCADE[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "author_id" bigint NOT NULL, "post_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE INDEX "index_likes_on_author_id" ON "likes" ("author_id")[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE INDEX "index_likes_on_post_id" ON "likes" ("post_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "posts" CASCADE[0m
+  [1m[35m (11.7ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "author_id" bigint NOT NULL, "title" character varying, "text" text, "comments_counter" integer, "likes_counter" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (11.1ms)[0m  [1m[35mCREATE INDEX "index_posts_on_author_id" ON "posts" ("author_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (13.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "photo" character varying, "bio" text, "posts_counter" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.5ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_2fd19c0db7"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+[0m
+  [1m[35m (3.6ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_f44b1e3c8a"
+FOREIGN KEY ("author_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (4.3ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_87a8aac469"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+[0m
+  [1m[35m (4.0ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_1f2302367a"
+FOREIGN KEY ("author_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.7ms)[0m  [1m[35mALTER TABLE "posts" ADD CONSTRAINT "fk_rails_04d13ef8c7"
+FOREIGN KEY ("author_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (10.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20230510075720)[0m
+  [1m[35m (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20230510075130),
+(20230510075327),
+(20230510075612);
+
+[0m
+  [1m[35m (17.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-05-23 16:17:47.442172"], ["updated_at", "2023-05-23 16:17:47.442172"]]
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2023-05-23 16:17:47.451764"], ["key", "environment"]]
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "c1a0ef803716ac81f196e885b8d5d53796d7b26f"], ["created_at", "2023-05-23 16:17:47.462244"], ["updated_at", "2023-05-23 16:17:47.462244"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8408248727925156390)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDeviseToUsers (20230523123833)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "users" ADD "email" character varying DEFAULT '' NOT NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "encrypted_password" character varying DEFAULT '' NOT NULL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_sent_at" timestamp(6)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "remember_created_at" timestamp(6)[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230523123833"]]
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8408248727925156390)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/users/" for ::1 at 2023-05-23 19:32:13 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/index.html.erb within layouts/application (Duration: 78.2ms | Allocations: 26728)
+  Rendered layout layouts/application.html.erb (Duration: 88.1ms | Allocations: 40517)
+Completed 200 OK in 117ms (Views: 92.0ms | ActiveRecord: 0.6ms | Allocations: 47319)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-05-23 19:32:57 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.7ms | Allocations: 296)
+  Rendered devise/shared/_links.html.erb (Duration: 3.3ms | Allocations: 788)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 25.5ms | Allocations: 8196)
+  Rendered layout layouts/application.html.erb (Duration: 31.5ms | Allocations: 10603)
+Completed 200 OK in 67ms (Views: 34.3ms | ActiveRecord: 5.1ms | Allocations: 31411)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-05-23 19:36:36 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.0ms | Allocations: 494)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 7.2ms | Allocations: 2988)
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | Allocations: 5385)
+Completed 200 OK in 19ms (Views: 14.6ms | ActiveRecord: 0.0ms | Allocations: 7625)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-05-23 19:36:39 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 15)
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 82)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1200)
+  Rendered layout layouts/application.html.erb (Duration: 13.7ms | Allocations: 3408)
+Completed 200 OK in 17ms (Views: 15.1ms | ActiveRecord: 0.0ms | Allocations: 4137)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-05-23 19:36:50 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 14)
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 82)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 6.4ms | Allocations: 1184)
+  Rendered layout layouts/application.html.erb (Duration: 15.6ms | Allocations: 3389)
+Completed 200 OK in 20ms (Views: 18.0ms | ActiveRecord: 0.0ms | Allocations: 3985)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-05-23 19:38:20 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 138)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1210)
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | Allocations: 3407)
+Completed 200 OK in 14ms (Views: 12.3ms | Allocations: 4082)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-05-23 19:38:25 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 14)
+  Rendered devise/shared/_links.html.erb (Duration: 1.6ms | Allocations: 82)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 7.7ms | Allocations: 1184)
+  Rendered layout layouts/application.html.erb (Duration: 16.3ms | Allocations: 3389)
+Completed 200 OK in 19ms (Views: 17.5ms | Allocations: 3980)
+
+
+Started POST "/users" for ::1 at 2023-05-23 19:38:44 +0300
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"r.brk.otman@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "r.brk.otman@gmail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.0ms | Allocations: 915)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 83)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 2187)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 4510)
+Completed 422 Unprocessable Entity in 293ms (Views: 6.4ms | ActiveRecord: 5.6ms | Allocations: 18001)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-05-23 19:40:32 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.0ms | Allocations: 249)
+  Rendered devise/shared/_links.html.erb (Duration: 1.3ms | Allocations: 552)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 12.6ms | Allocations: 2925)
+  Rendered layout layouts/application.html.erb (Duration: 21.4ms | Allocations: 5590)
+Completed 200 OK in 29ms (Views: 25.7ms | ActiveRecord: 0.0ms | Allocations: 7167)
+
+
+Started POST "/users" for ::1 at 2023-05-23 19:40:50 +0300
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"otmanTR", "email"=>"r.brk.otman@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+[31mUnpermitted parameter: :name. Context: { controller: Devise::RegistrationsController, action: create, request: #<ActionDispatch::Request:0x00007f6d9c0ff6c0>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"otmanTR", "email"=>"r.brk.otman@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up", "controller"=>"devise/registrations", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "r.brk.otman@gmail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.6ms | Allocations: 688)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 96)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 5.1ms | Allocations: 2603)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 4872)
+Completed 422 Unprocessable Entity in 273ms (Views: 9.5ms | ActiveRecord: 0.7ms | Allocations: 10483)
+
+
+Started POST "/users" for ::1 at 2023-05-23 19:42:40 +0300
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"otmanTR", "email"=>"r.brk.otman@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+[31mUnpermitted parameter: :name. Context: { controller: Devise::RegistrationsController, action: create, request: #<ActionDispatch::Request:0x00007f6db46177a8>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"otmanTR", "email"=>"r.brk.otman@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up", "controller"=>"devise/registrations", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "r.brk.otman@gmail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.7ms | Allocations: 959)
+  Rendered devise/shared/_links.html.erb (Duration: 1.2ms | Allocations: 558)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 7.6ms | Allocations: 4055)
+  Rendered layout layouts/application.html.erb (Duration: 12.3ms | Allocations: 6710)
+Completed 422 Unprocessable Entity in 292ms (Views: 13.8ms | ActiveRecord: 0.5ms | Allocations: 12962)
+
+
+Started POST "/users" for ::1 at 2023-05-23 19:46:01 +0300
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"otmanTR", "email"=>"r.brk.otman@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+[31mUnpermitted parameter: :password_confirmation. Context: { controller: Devise::RegistrationsController, action: create, request: #<ActionDispatch::Request:0x00007f6d983c5d40>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"otmanTR", "email"=>"r.brk.otman@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up", "controller"=>"devise/registrations", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "r.brk.otman@gmail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 428)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 106)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1991)
+  Rendered layout layouts/application.html.erb (Duration: 11.8ms | Allocations: 15754)
+Completed 422 Unprocessable Entity in 273ms (Views: 12.4ms | ActiveRecord: 5.0ms | Allocations: 25976)
+
+
+Started POST "/users" for ::1 at 2023-05-23 19:47:29 +0300
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"otmanTR", "email"=>"r.brk.otman@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+[31mUnpermitted parameter: :password_confirmation. Context: { controller: Devise::RegistrationsController, action: create, request: #<ActionDispatch::Request:0x00007f6d60004860>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"otmanTR", "email"=>"r.brk.otman@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up", "controller"=>"devise/registrations", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "r.brk.otman@gmail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.9ms | Allocations: 373)
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 82)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1758)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 3964)
+Completed 422 Unprocessable Entity in 289ms (Views: 9.5ms | ActiveRecord: 0.9ms | Allocations: 9290)
+
+
+Started GET "/login" for ::1 at 2023-05-23 19:48:29 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/login"):
+  
+Started GET "/users" for ::1 at 2023-05-23 19:59:53 +0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/index.html.erb within layouts/application (Duration: 19.8ms | Allocations: 5031)
+  Rendered layout layouts/application.html.erb (Duration: 49.0ms | Allocations: 18572)
+Completed 200 OK in 58ms (Views: 50.6ms | ActiveRecord: 8.8ms | Allocations: 22387)
+
+
+Started GET "/users/posts" for ::1 at 2023-05-23 20:00:01 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"posts"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+Completed 404 Not Found in 10ms (ActiveRecord: 1.4ms | Allocations: 2016)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=posts):
+  
+app/controllers/users_controller.rb:8:in `show'
+Started GET "/users/sign_up" for ::1 at 2023-05-23 20:02:06 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.2ms | Allocations: 250)
+  Rendered devise/shared/_links.html.erb (Duration: 1.4ms | Allocations: 622)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 16.7ms | Allocations: 3609)
+  Rendered layout layouts/application.html.erb (Duration: 22.4ms | Allocations: 6020)
+Completed 200 OK in 38ms (Views: 25.6ms | ActiveRecord: 0.0ms | Allocations: 10288)
+
+
+Started POST "/users" for ::1 at 2023-05-23 20:02:21 +0300
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"otmanTR", "photo"=>"qweqweqweqweqwe", "bio"=>"qweqweqweqweqwe", "email"=>"r.brk.otman@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+[31mUnpermitted parameter: :password_confirmation. Context: { controller: Devise::RegistrationsController, action: create, request: #<ActionDispatch::Request:0x00007f6d900d0db8>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"otmanTR", "photo"=>"qweqweqweqweqwe", "bio"=>"qweqweqweqweqwe", "email"=>"r.brk.otman@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up", "controller"=>"devise/registrations", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "r.brk.otman@gmail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.7ms | Allocations: 385)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 82)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 4.6ms | Allocations: 2035)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 4232)
+Completed 422 Unprocessable Entity in 284ms (Views: 9.3ms | ActiveRecord: 1.0ms | Allocations: 10355)
+
+
+Started POST "/users" for ::1 at 2023-05-23 20:08:41 +0300
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"otmanTR", "photo"=>"qweqweqweqweqwe", "bio"=>"qweqweqweqweqwe", "email"=>"r.brk.otman@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+[31mUnpermitted parameter: :password_confirmation. Context: { controller: Devise::RegistrationsController, action: create, request: #<ActionDispatch::Request:0x00007f6db54050e0>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"otmanTR", "photo"=>"qweqweqweqweqwe", "bio"=>"qweqweqweqweqwe", "email"=>"r.brk.otman@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up", "controller"=>"devise/registrations", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "r.brk.otman@gmail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.1ms | Allocations: 703)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 96)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 5.0ms | Allocations: 2869)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | Allocations: 5121)
+Completed 422 Unprocessable Entity in 49ms (Views: 9.5ms | ActiveRecord: 16.2ms | Allocations: 13245)
+
+
+Started GET "/sign_up" for ::1 at 2023-05-23 20:11:20 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/sign_up"):
+  
+Started GET "/users" for ::1 at 2023-05-23 20:12:44 +0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/index.html.erb within layouts/application (Duration: 7.2ms | Allocations: 1376)
+  Rendered layout layouts/application.html.erb (Duration: 28.8ms | Allocations: 3191)
+Completed 200 OK in 32ms (Views: 29.3ms | ActiveRecord: 0.6ms | Allocations: 3755)
+
+
+Started GET "/users" for ::1 at 2023-05-23 20:12:45 +0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/index.html.erb within layouts/application (Duration: 7.8ms | Allocations: 1275)
+  Rendered layout layouts/application.html.erb (Duration: 15.1ms | Allocations: 3080)
+Completed 200 OK in 18ms (Views: 15.8ms | ActiveRecord: 0.5ms | Allocations: 3624)
+
+
+Started POST "/users" for ::1 at 2023-05-23 20:13:04 +0300
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"otmanTR", "photo"=>"qweqweqweqweqwe", "bio"=>"qweqweqweqwe", "email"=>"r.brk.otman@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+[31mUnpermitted parameter: :password_confirmation. Context: { controller: Devise::RegistrationsController, action: create, request: #<ActionDispatch::Request:0x000055d4e86aa5a0>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"otmanTR", "photo"=>"qweqweqweqweqwe", "bio"=>"qweqweqweqwe", "email"=>"r.brk.otman@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up", "controller"=>"devise/registrations", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "r.brk.otman@gmail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 373)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 82)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2008)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | Allocations: 4204)
+Completed 422 Unprocessable Entity in 283ms (Views: 8.4ms | ActiveRecord: 0.7ms | Allocations: 9309)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-05-23 20:14:27 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 106)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 11.6ms | Allocations: 1884)
+  Rendered layout layouts/application.html.erb (Duration: 34.3ms | Allocations: 15637)
+Completed 200 OK in 54ms (Views: 36.3ms | ActiveRecord: 8.3ms | Allocations: 20659)
+
+
+Started POST "/users" for ::1 at 2023-05-23 20:14:39 +0300
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"otmanTR", "photo"=>"qweqweqweqweqwe", "bio"=>"asdasdasdasd", "email"=>"r.brk.otman@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+[31mUnpermitted parameter: :password_confirmation. Context: { controller: Devise::RegistrationsController, action: create, request: #<ActionDispatch::Request:0x00007f6d84005908>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"otmanTR", "photo"=>"qweqweqweqweqwe", "bio"=>"asdasdasdasd", "email"=>"r.brk.otman@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up", "controller"=>"devise/registrations", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "r.brk.otman@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (6.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "otmanTR"], ["photo", "qweqweqweqweqwe"], ["bio", "asdasdasdasd"], ["posts_counter", nil], ["created_at", "2023-05-23 17:14:40.103140"], ["updated_at", "2023-05-23 17:14:40.103140"], ["email", "r.brk.otman@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 282ms (ActiveRecord: 9.0ms | Allocations: 7684)
+
+
+Started GET "/" for ::1 at 2023-05-23 20:14:40 +0300
+Processing by Rails::WelcomeController#index as TURBO_STREAM
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.5ms | Allocations: 495)
+Completed 200 OK in 5ms (Views: 3.0ms | ActiveRecord: 0.0ms | Allocations: 1564)
+
+
+Started GET "/" for ::1 at 2023-05-23 20:14:40 +0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.2ms | Allocations: 486)
+Completed 200 OK in 6ms (Views: 4.0ms | ActiveRecord: 0.0ms | Allocations: 1461)
+
+
+Started GET "/users" for ::1 at 2023-05-23 20:15:08 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/index.html.erb within layouts/application (Duration: 6.8ms | Allocations: 1913)
+  Rendered layout layouts/application.html.erb (Duration: 12.4ms | Allocations: 4084)
+Completed 200 OK in 25ms (Views: 15.0ms | ActiveRecord: 0.9ms | Allocations: 6720)
+
+
+Started GET "/qweqweqweqweqwe" for ::1 at 2023-05-23 20:15:08 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/qweqweqweqweqwe"):
+  
+Started GET "/users/sign_up" for ::1 at 2023-05-23 20:15:14 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 7ms (ActiveRecord: 0.4ms | Allocations: 1504)
+
+
+Started GET "/" for ::1 at 2023-05-23 20:15:14 +0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.3ms | Allocations: 19)
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.0ms | Allocations: 301)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-05-23 20:15:20 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 9ms (ActiveRecord: 0.6ms | Allocations: 1345)
+
+
+Started GET "/" for ::1 at 2023-05-23 20:15:20 +0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | Allocations: 15)
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 275)
+
+
+Started GET "/users" for ::1 at 2023-05-23 20:15:27 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/index.html.erb within layouts/application (Duration: 6.8ms | Allocations: 1333)
+  Rendered layout layouts/application.html.erb (Duration: 12.4ms | Allocations: 3139)
+Completed 200 OK in 20ms (Views: 12.9ms | ActiveRecord: 0.8ms | Allocations: 4337)
+
+
+Started GET "/qweqweqweqweqwe" for ::1 at 2023-05-23 20:15:27 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/qweqweqweqweqwe"):
+  
+Started GET "/users/1" for ::1 at 2023-05-23 20:15:29 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 1], ["LIMIT", 3]]
+  ↳ app/views/users/show.html.erb:19
+  Rendered users/show.html.erb within layouts/application (Duration: 35.7ms | Allocations: 11431)
+  Rendered layout layouts/application.html.erb (Duration: 38.9ms | Allocations: 13587)
+Completed 200 OK in 46ms (Views: 37.7ms | ActiveRecord: 2.5ms | Allocations: 15043)
+
+
+Started GET "/users/qweqweqweqweqwe" for ::1 at 2023-05-23 20:15:30 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"qweqweqweqweqwe"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+Completed 404 Not Found in 5ms (ActiveRecord: 1.2ms | Allocations: 993)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=qweqweqweqweqwe):
+  
+app/controllers/users_controller.rb:8:in `show'
+Started GET "/users/1/posts" for ::1 at 2023-05-23 20:15:32 +0300
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/posts/index.html.erb:23:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.0ms | Allocations: 3087)
+  Rendered layout layouts/application.html.erb (Duration: 15.3ms | Allocations: 5188)
+Completed 200 OK in 27ms (Views: 21.5ms | ActiveRecord: 1.2ms | Allocations: 6780)
+
+
+Started GET "/users/1/qweqweqweqweqwe" for ::1 at 2023-05-23 20:15:32 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/qweqweqweqweqwe"):
+  
+Started GET "/users/1/qweqweqweqweqwe" for ::1 at 2023-05-23 20:15:34 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/qweqweqweqweqwe"):
+  
+Started GET "/users/1/qweqweqweqweqwe" for ::1 at 2023-05-23 20:15:37 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/qweqweqweqweqwe"):
+  
+Started GET "/users/qweqweqweqweqwe" for ::1 at 2023-05-23 20:15:38 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"qweqweqweqweqwe"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.3ms | Allocations: 975)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=qweqweqweqweqwe):
+  
+app/controllers/users_controller.rb:8:in `show'
+Started GET "/qweqweqweqweqwe" for ::1 at 2023-05-23 20:15:39 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/qweqweqweqweqwe"):
+  
+Started GET "/users/log-in" for ::1 at 2023-05-23 20:15:50 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"log-in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.5ms | Allocations: 955)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=log-in):
+  
+app/controllers/users_controller.rb:8:in `show'
+Started GET "/users/log-in" for ::1 at 2023-05-23 20:16:48 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"log-in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.4ms | Allocations: 955)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=log-in):
+  
+app/controllers/users_controller.rb:8:in `show'
+Started GET "/users/sign_up" for ::1 at 2023-05-23 20:18:11 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 92ms (ActiveRecord: 1.3ms | Allocations: 1423)
+
+
+Started GET "/" for ::1 at 2023-05-23 20:18:11 +0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | Allocations: 19)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 299)
+
+
+Started GET "/" for ::1 at 2023-05-23 20:18:16 +0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | Allocations: 15)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 275)
+
+
+Started GET "/" for ::1 at 2023-05-23 20:18:17 +0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.2ms | Allocations: 15)
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.0ms | Allocations: 275)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-05-23 20:18:27 +0300
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 7ms (ActiveRecord: 0.3ms | Allocations: 1786)
+
+
+Started GET "/users/" for ::1 at 2023-05-23 20:18:35 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/index.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1461)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 3300)
+Completed 200 OK in 18ms (Views: 10.5ms | ActiveRecord: 0.9ms | Allocations: 4543)
+
+
+Started GET "/users/qweqweqweqweqwe" for ::1 at 2023-05-23 20:18:35 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"qweqweqweqweqwe"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.8ms | Allocations: 975)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=qweqweqweqweqwe):
+  
+app/controllers/users_controller.rb:8:in `show'
+Started GET "/users" for ::1 at 2023-05-23 20:21:14 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/index.html.erb within layouts/application (Duration: 158.4ms | Allocations: 22463)
+  Rendered layout layouts/application.html.erb (Duration: 176.9ms | Allocations: 36209)
+Completed 200 OK in 232ms (Views: 180.6ms | ActiveRecord: 5.6ms | Allocations: 67179)
+
+
+Started GET "/qweqweqweqweqwe" for ::1 at 2023-05-23 20:21:15 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/qweqweqweqweqwe"):
+  
+Started GET "/users/sign_up" for ::1 at 2023-05-23 20:21:23 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 8ms (ActiveRecord: 0.3ms | Allocations: 3546)
+
+
+Started GET "/" for ::1 at 2023-05-23 20:21:23 +0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.4ms | Allocations: 493)
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.0ms | Allocations: 1515)
+
+
+Started GET "/users/1" for ::1 at 2023-05-23 20:21:32 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 1], ["LIMIT", 3]]
+  ↳ app/views/users/show.html.erb:19
+  Rendered users/show.html.erb within layouts/application (Duration: 28.7ms | Allocations: 11574)
+  Rendered layout layouts/application.html.erb (Duration: 34.1ms | Allocations: 14085)
+Completed 200 OK in 45ms (Views: 36.1ms | ActiveRecord: 2.1ms | Allocations: 16519)
+
+
+Started GET "/users/qweqweqweqweqwe" for ::1 at 2023-05-23 20:21:32 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"qweqweqweqweqwe"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.3ms | Allocations: 1010)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=qweqweqweqweqwe):
+  
+app/controllers/users_controller.rb:8:in `show'
+Started GET "/users/sign_up" for ::1 at 2023-05-23 20:21:46 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 9ms (ActiveRecord: 0.5ms | Allocations: 1431)
+
+
+Started GET "/" for ::1 at 2023-05-23 20:21:46 +0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 3.1ms | Allocations: 486)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.0ms | Allocations: 1367)
+
+
+Started GET "/users" for ::1 at 2023-05-23 20:51:07 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/index.html.erb within layouts/application (Duration: 11.9ms | Allocations: 1737)
+  Rendered layout layouts/application.html.erb (Duration: 16.8ms | Allocations: 3582)
+Completed 200 OK in 49ms (Views: 18.4ms | ActiveRecord: 11.6ms | Allocations: 8268)
+
+
+Started GET "/qweqweqweqweqwe" for ::1 at 2023-05-23 20:51:07 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/qweqweqweqweqwe"):
+  
+Started GET "/users/sign_up" for ::1 at 2023-05-23 20:52:36 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 6ms (ActiveRecord: 0.4ms | Allocations: 1398)
+
+
+Started GET "/" for ::1 at 2023-05-23 20:52:36 +0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.3ms | Allocations: 15)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.0ms | Allocations: 281)
+
+
+Started GET "/users" for ::1 at 2023-05-23 20:52:47 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/index.html.erb within layouts/application (Duration: 7.6ms | Allocations: 1334)
+  Rendered layout layouts/application.html.erb (Duration: 15.7ms | Allocations: 3140)
+Completed 200 OK in 24ms (Views: 15.0ms | ActiveRecord: 3.4ms | Allocations: 4338)
+
+
+Started GET "/qweqweqweqweqwe" for ::1 at 2023-05-23 20:52:47 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/qweqweqweqweqwe"):
+  
+Started GET "/users/sign_in" for ::1 at 2023-05-23 20:52:54 +0300
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 6ms (ActiveRecord: 0.4ms | Allocations: 1771)
+
+
+Started GET "/" for ::1 at 2023-05-23 20:52:54 +0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | Allocations: 22)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 332)
+
+
+Started GET "/users" for ::1 at 2023-05-23 20:53:25 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/index.html.erb within layouts/application (Duration: 124.0ms | Allocations: 22363)
+  Rendered layout layouts/application.html.erb (Duration: 224.6ms | Allocations: 36134)
+Completed 200 OK in 289ms (Views: 231.1ms | ActiveRecord: 6.4ms | Allocations: 67123)
+
+
+Started GET "/qweqweqweqweqwe" for ::1 at 2023-05-23 20:53:26 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/qweqweqweqweqwe"):
+  
+Started GET "/login" for ::1 at 2023-05-23 20:54:43 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/login"):
+  
+Started GET "/users" for ::1 at 2023-05-23 20:57:49 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/index.html.erb within layouts/application (Duration: 6.7ms | Allocations: 1444)
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 3287)
+Completed 200 OK in 19ms (Views: 11.0ms | ActiveRecord: 1.2ms | Allocations: 4660)
+
+
+Started GET "/qweqweqweqweqwe" for ::1 at 2023-05-23 20:57:49 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/qweqweqweqweqwe"):
+  
+Started GET "/users/sign_in" for ::1 at 2023-05-23 20:57:58 +0300
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 13ms (ActiveRecord: 0.5ms | Allocations: 3546)
+
+
+Started GET "/" for ::1 at 2023-05-23 20:57:58 +0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 3.1ms | Allocations: 493)
+Completed 200 OK in 11ms (Views: 9.1ms | ActiveRecord: 0.0ms | Allocations: 1514)
+
+
+Started GET "/" for ::1 at 2023-05-23 21:01:40 +0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.6ms | Allocations: 487)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 1480)
+
+
+Started GET "/users" for ::1 at 2023-05-23 21:01:44 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1897)
+  Rendered layout layouts/application.html.erb (Duration: 32.9ms | Allocations: 15342)
+Completed 200 OK in 68ms (Views: 34.4ms | ActiveRecord: 7.5ms | Allocations: 23594)
+
+
+Started GET "/qweqweqweqweqwe" for ::1 at 2023-05-23 21:01:44 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/qweqweqweqweqwe"):
+  
+Started GET "/users1" for ::1 at 2023-05-23 21:01:49 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/users1"):
+  
+Started GET "/users/1" for ::1 at 2023-05-23 21:01:52 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 1], ["LIMIT", 3]]
+  ↳ app/views/users/show.html.erb:19
+  Rendered users/show.html.erb within layouts/application (Duration: 27.8ms | Allocations: 11387)
+  Rendered layout layouts/application.html.erb (Duration: 33.9ms | Allocations: 13525)
+Completed 200 OK in 41ms (Views: 33.3ms | ActiveRecord: 2.4ms | Allocations: 15119)
+
+
+Started GET "/users/qweqweqweqweqwe" for ::1 at 2023-05-23 21:01:52 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"qweqweqweqweqwe"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.9ms | Allocations: 1010)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=qweqweqweqweqwe):
+  
+app/controllers/users_controller.rb:8:in `show'
+Started GET "/users/1/posts" for ::1 at 2023-05-23 21:01:59 +0300
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/posts/index.html.erb:23:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 15.2ms | Allocations: 3082)
+  Rendered layout layouts/application.html.erb (Duration: 19.7ms | Allocations: 5178)
+Completed 200 OK in 29ms (Views: 23.3ms | ActiveRecord: 1.2ms | Allocations: 6789)
+
+
+Started GET "/users/1/qweqweqweqweqwe" for ::1 at 2023-05-23 21:01:59 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/qweqweqweqweqwe"):
+  
+Started GET "/users/1/posts/new" for ::1 at 2023-05-23 21:02:02 +0300
+Processing by PostsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 8.5ms | Allocations: 2255)
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 4599)
+Completed 200 OK in 39ms (Views: 13.5ms | ActiveRecord: 2.7ms | Allocations: 20166)
+
+
+Started GET "/users/1/posts/qweqweqweqweqwe" for ::1 at 2023-05-23 21:02:02 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"qweqweqweqweqwe"}
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:26:in `show'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.8ms | Allocations: 1602)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=qweqweqweqweqwe):
+  
+app/controllers/posts_controller.rb:26:in `show'
+Started POST "/users/1/posts" for ::1 at 2023-05-23 21:02:08 +0300
+Processing by PostsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"burak", "text"=>"xxxasdasd"}, "commit"=>"Create Post", "user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:17:in `create'
+  [1m[36mPost Create (3.5ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 1], ["title", "burak"], ["text", "xxxasdasd"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2023-05-23 18:02:08.145360"], ["updated_at", "2023-05-23 18:02:08.145360"]]
+  ↳ app/controllers/posts_controller.rb:17:in `create'
+  [1m[36mUser Update All (1.0ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 1]]
+  ↳ app/models/post.rb:13:in `update_post_counter'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:17:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 36ms (ActiveRecord: 7.0ms | Allocations: 7251)
+
+
+Started GET "/users/1/posts" for ::1 at 2023-05-23 21:02:08 +0300
+Processing by PostsController#index as TURBO_STREAM
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/posts/index.html.erb:23:in `each_with_index'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 1], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:33
+  Rendered posts/index.html.erb within layouts/application (Duration: 20.7ms | Allocations: 6687)
+  Rendered layout layouts/application.html.erb (Duration: 27.1ms | Allocations: 8849)
+Completed 200 OK in 31ms (Views: 25.4ms | ActiveRecord: 3.0ms | Allocations: 9808)
+
+
+Started GET "/users/1/qweqweqweqweqwe" for ::1 at 2023-05-23 21:02:08 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/qweqweqweqweqwe"):
+  
+Started GET "/users/1/posts/1" for ::1 at 2023-05-23 21:02:10 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:26:in `show'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:27:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:26
+  Rendered posts/show.html.erb within layouts/application (Duration: 27.9ms | Allocations: 7767)
+  Rendered layout layouts/application.html.erb (Duration: 31.2ms | Allocations: 9667)
+Completed 200 OK in 39ms (Views: 31.9ms | ActiveRecord: 1.9ms | Allocations: 11045)
+
+
+Started GET "/users/1/posts/qweqweqweqweqwe" for ::1 at 2023-05-23 21:02:10 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"qweqweqweqweqwe"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:26:in `show'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.3ms | Allocations: 972)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=qweqweqweqweqwe):
+  
+app/controllers/posts_controller.rb:26:in `show'
+Started POST "/users/1/posts/1/likes" for ::1 at 2023-05-23 21:02:13 +0300
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "commit"=>"Like Post", "user_id"=>"1", "post_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mLike Create (1.2ms)[0m  [1m[32mINSERT INTO "likes" ("author_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["author_id", 1], ["post_id", 1], ["created_at", "2023-05-23 18:02:13.101053"], ["updated_at", "2023-05-23 18:02:13.101053"]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mPost Update All (0.9ms)[0m  [1m[33mUPDATE "posts" SET "likes_counter" = COALESCE("likes_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["likes_counter", 1], ["id", 1]]
+  ↳ app/models/like.rb:8:in `update_like_counter'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 43ms (ActiveRecord: 8.3ms | Allocations: 22283)
+
+
+Started GET "/users/1/posts" for ::1 at 2023-05-23 21:02:13 +0300
+Processing by PostsController#index as TURBO_STREAM
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/posts/index.html.erb:23:in `each_with_index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 1], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:33
+  Rendered posts/index.html.erb within layouts/application (Duration: 5.9ms | Allocations: 2325)
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | Allocations: 4328)
+Completed 200 OK in 14ms (Views: 10.1ms | ActiveRecord: 1.0ms | Allocations: 5200)
+
+
+Started GET "/users/1/qweqweqweqweqwe" for ::1 at 2023-05-23 21:02:13 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/qweqweqweqweqwe"):
+  
+Started GET "/users/1/posts/1" for ::1 at 2023-05-23 21:02:14 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:26:in `show'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:27:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:26
+  Rendered posts/show.html.erb within layouts/application (Duration: 13.8ms | Allocations: 2512)
+  Rendered layout layouts/application.html.erb (Duration: 19.5ms | Allocations: 4304)
+Completed 200 OK in 28ms (Views: 17.4ms | ActiveRecord: 4.5ms | Allocations: 5571)
+
+
+Started GET "/users/1/posts/qweqweqweqweqwe" for ::1 at 2023-05-23 21:02:14 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"qweqweqweqweqwe"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:26:in `show'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.4ms | Allocations: 953)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=qweqweqweqweqwe):
+  
+app/controllers/posts_controller.rb:26:in `show'
+Started POST "/users/1/posts/1/likes" for ::1 at 2023-05-23 21:02:15 +0300
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "commit"=>"Like Post", "user_id"=>"1", "post_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mLike Create (0.6ms)[0m  [1m[32mINSERT INTO "likes" ("author_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["author_id", 1], ["post_id", 1], ["created_at", "2023-05-23 18:02:15.798962"], ["updated_at", "2023-05-23 18:02:15.798962"]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mPost Update All (0.4ms)[0m  [1m[33mUPDATE "posts" SET "likes_counter" = COALESCE("likes_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["likes_counter", 1], ["id", 1]]
+  ↳ app/models/like.rb:8:in `update_like_counter'
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 25ms (ActiveRecord: 4.9ms | Allocations: 5206)
+
+
+Started GET "/users/1/posts" for ::1 at 2023-05-23 21:02:15 +0300
+Processing by PostsController#index as TURBO_STREAM
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/posts/index.html.erb:23:in `each_with_index'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 1], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:33
+  Rendered posts/index.html.erb within layouts/application (Duration: 8.7ms | Allocations: 2216)
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | Allocations: 4191)
+Completed 200 OK in 16ms (Views: 11.7ms | ActiveRecord: 1.0ms | Allocations: 5013)
+
+
+Started GET "/users/1/qweqweqweqweqwe" for ::1 at 2023-05-23 21:02:15 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/qweqweqweqweqwe"):
+  
+Started GET "/users/1/posts/1" for ::1 at 2023-05-23 21:02:20 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:26:in `show'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:27:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:26
+  Rendered posts/show.html.erb within layouts/application (Duration: 11.4ms | Allocations: 2505)
+  Rendered layout layouts/application.html.erb (Duration: 15.6ms | Allocations: 4289)
+Completed 200 OK in 32ms (Views: 16.1ms | ActiveRecord: 2.1ms | Allocations: 5552)
+
+
+Started GET "/users/1/posts/qweqweqweqweqwe" for ::1 at 2023-05-23 21:02:20 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"qweqweqweqweqwe"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:26:in `show'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.6ms | Allocations: 947)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=qweqweqweqweqwe):
+  
+app/controllers/posts_controller.rb:26:in `show'
+Started GET "/users/1/posts/qweqweqweqweqwe" for ::1 at 2023-05-23 21:02:22 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"qweqweqweqweqwe"}
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:26:in `show'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.9ms | Allocations: 946)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=qweqweqweqweqwe):
+  
+app/controllers/posts_controller.rb:26:in `show'
+Started GET "/users/1/posts/new" for ::1 at 2023-05-23 21:02:25 +0300
+Processing by PostsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 5.1ms | Allocations: 861)
+  Rendered layout layouts/application.html.erb (Duration: 18.9ms | Allocations: 3082)
+Completed 200 OK in 21ms (Views: 20.3ms | ActiveRecord: 0.0ms | Allocations: 3425)
+
+
+Started GET "/users/1/posts/qweqweqweqweqwe" for ::1 at 2023-05-23 21:02:25 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"qweqweqweqweqwe"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:26:in `show'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.7ms | Allocations: 947)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=qweqweqweqweqwe):
+  
+app/controllers/posts_controller.rb:26:in `show'
+Started GET "/users/1" for ::1 at 2023-05-23 21:02:28 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 1], ["LIMIT", 3]]
+  ↳ app/views/users/show.html.erb:19
+  Rendered users/show.html.erb within layouts/application (Duration: 7.9ms | Allocations: 1554)
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | Allocations: 3512)
+Completed 200 OK in 18ms (Views: 12.8ms | ActiveRecord: 1.5ms | Allocations: 4318)
+
+
+Started GET "/users/qweqweqweqweqwe" for ::1 at 2023-05-23 21:02:28 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"qweqweqweqweqwe"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.1ms | Allocations: 955)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=qweqweqweqweqwe):
+  
+app/controllers/users_controller.rb:8:in `show'
+Started GET "/users/" for ::1 at 2023-05-23 21:02:29 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/index.html.erb within layouts/application (Duration: 7.4ms | Allocations: 1343)
+  Rendered layout layouts/application.html.erb (Duration: 12.8ms | Allocations: 3155)
+Completed 200 OK in 20ms (Views: 14.1ms | ActiveRecord: 0.6ms | Allocations: 4328)
+
+
+Started GET "/users/qweqweqweqweqwe" for ::1 at 2023-05-23 21:02:29 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"qweqweqweqweqwe"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+Completed 404 Not Found in 10ms (ActiveRecord: 0.6ms | Allocations: 955)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=qweqweqweqweqwe):
+  
+app/controllers/users_controller.rb:8:in `show'
+Started GET "/users/1" for ::1 at 2023-05-23 21:02:30 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 1], ["LIMIT", 3]]
+  ↳ app/views/users/show.html.erb:19
+  Rendered users/show.html.erb within layouts/application (Duration: 9.1ms | Allocations: 1550)
+  Rendered layout layouts/application.html.erb (Duration: 17.5ms | Allocations: 3522)
+Completed 200 OK in 25ms (Views: 17.9ms | ActiveRecord: 1.2ms | Allocations: 4328)
+
+
+Started GET "/users/qweqweqweqweqwe" for ::1 at 2023-05-23 21:02:30 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"qweqweqweqweqwe"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.2ms | Allocations: 955)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=qweqweqweqweqwe):
+  
+app/controllers/users_controller.rb:8:in `show'
+Started GET "/users/1/posts/1" for ::1 at 2023-05-23 21:02:35 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:26:in `show'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:27:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (1.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:26
+  Rendered posts/show.html.erb within layouts/application (Duration: 16.6ms | Allocations: 2507)
+  Rendered layout layouts/application.html.erb (Duration: 22.2ms | Allocations: 4299)
+Completed 200 OK in 30ms (Views: 19.7ms | ActiveRecord: 4.2ms | Allocations: 5563)
+
+
+Started GET "/users/1/posts/qweqweqweqweqwe" for ::1 at 2023-05-23 21:02:35 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"qweqweqweqweqwe"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:26:in `show'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.2ms | Allocations: 947)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=qweqweqweqweqwe):
+  
+app/controllers/posts_controller.rb:26:in `show'
+Started GET "/users/1/posts/1/comments/new" for ::1 at 2023-05-23 21:02:37 +0300
+Processing by CommentsController#new as HTML
+  Parameters: {"user_id"=>"1", "post_id"=>"1"}
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:4:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/new.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1138)
+  Rendered layout layouts/application.html.erb (Duration: 11.2ms | Allocations: 3555)
+Completed 200 OK in 28ms (Views: 14.3ms | ActiveRecord: 3.7ms | Allocations: 6587)
+
+
+Started POST "/users/1/posts/1/comments" for ::1 at 2023-05-23 21:02:39 +0300
+Processing by CommentsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"text"=>"123123123"}, "commit"=>"Create Comment", "user_id"=>"1", "post_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:11:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:11:in `create'
+  [1m[36mPost Load (2.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:11:in `create'
+  [1m[36mComment Create (2.1ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 1], ["post_id", 1], ["text", "123123123"], ["created_at", "2023-05-23 18:02:39.567532"], ["updated_at", "2023-05-23 18:02:39.567532"]]
+  ↳ app/controllers/comments_controller.rb:11:in `create'
+  [1m[36mPost Update All (0.4ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 1]]
+  ↳ app/models/comment.rb:8:in `update_comment_counter'
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:11:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 38ms (ActiveRecord: 9.5ms | Allocations: 8370)
+
+
+Started GET "/users/1/posts" for ::1 at 2023-05-23 21:02:39 +0300
+Processing by PostsController#index as TURBO_STREAM
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/posts/index.html.erb:23:in `each_with_index'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 1], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:33
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:35
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.8ms | Allocations: 2927)
+  Rendered layout layouts/application.html.erb (Duration: 14.6ms | Allocations: 4885)
+Completed 200 OK in 17ms (Views: 14.3ms | ActiveRecord: 1.2ms | Allocations: 5731)
+
+
+Started GET "/users/1/qweqweqweqweqwe" for ::1 at 2023-05-23 21:02:39 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/qweqweqweqweqwe"):
+  
+Started GET "/users" for ::1 at 2023-05-23 21:10:46 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/index.html.erb within layouts/application (Duration: 132.5ms | Allocations: 22529)
+  Rendered layout layouts/application.html.erb (Duration: 220.2ms | Allocations: 36295)
+Completed 200 OK in 288ms (Views: 223.7ms | ActiveRecord: 9.0ms | Allocations: 67258)
+
+
+Started GET "/qweqweqweqweqwe" for ::1 at 2023-05-23 21:10:47 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/qweqweqweqweqwe"):
+  
+Started GET "/users/1" for ::1 at 2023-05-23 21:10:50 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 1], ["LIMIT", 3]]
+  ↳ app/views/users/show.html.erb:19
+  Rendered users/show.html.erb within layouts/application (Duration: 44.7ms | Allocations: 26766)
+  Rendered layout layouts/application.html.erb (Duration: 47.4ms | Allocations: 28891)
+Completed 200 OK in 54ms (Views: 43.9ms | ActiveRecord: 4.7ms | Allocations: 30571)
+
+
+Started GET "/users/qweqweqweqweqwe" for ::1 at 2023-05-23 21:10:50 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"qweqweqweqweqwe"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+Completed 404 Not Found in 8ms (ActiveRecord: 0.4ms | Allocations: 1007)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=qweqweqweqweqwe):
+  
+app/controllers/users_controller.rb:8:in `show'
+Started GET "/users/sign_up" for ::1 at 2023-05-23 21:10:57 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 18ms (ActiveRecord: 0.3ms | Allocations: 3564)
+
+
+Started GET "/" for ::1 at 2023-05-23 21:10:57 +0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 3.6ms | Allocations: 493)
+Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 0.0ms | Allocations: 1514)
+
+
+Started GET "/users/1" for ::1 at 2023-05-23 21:10:59 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 1], ["LIMIT", 3]]
+  ↳ app/views/users/show.html.erb:19
+  Rendered users/show.html.erb within layouts/application (Duration: 7.9ms | Allocations: 2289)
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 4668)
+Completed 200 OK in 22ms (Views: 17.3ms | ActiveRecord: 0.7ms | Allocations: 6423)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-05-23 21:11:04 +0300
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 7ms (ActiveRecord: 0.4ms | Allocations: 1795)
+
+
+Started GET "/" for ::1 at 2023-05-23 21:11:04 +0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.2ms | Allocations: 486)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms | Allocations: 1397)
+
+
+Started GET "/users" for ::1 at 2023-05-23 21:11:08 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/index.html.erb within layouts/application (Duration: 6.4ms | Allocations: 1719)
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | Allocations: 3556)
+Completed 200 OK in 20ms (Views: 10.5ms | ActiveRecord: 1.7ms | Allocations: 5041)
+
+
+Started GET "/qweqweqweqweqwe" for ::1 at 2023-05-23 21:11:08 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/qweqweqweqweqwe"):
+  
