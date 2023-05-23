@@ -69,8 +69,8 @@ RSpec.describe 'posts', type: :feature do
     end
 
     it 'shows a section for pagination if there are more posts than fit on the view' do
-        expect(page).to have_content("Pagination")
-      end
+      expect(page).to have_content('Pagination')
+    end
 
     it "when click on a post, it redirects to the post's show page" do
       visit user_posts_path(@first_user)
@@ -147,6 +147,5 @@ RSpec.describe 'posts', type: :feature do
       expect(page).to have_content(@second_comment.text)
       expect(page).to have_content(@third_comment.text)
     end
-
   end
 end
