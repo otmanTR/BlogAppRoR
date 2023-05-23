@@ -47,7 +47,6 @@ RSpec.describe 'users/index', type: :feature do
       expect(page).to have_current_path(user_path(user))
       visit users_path
     end
-
   end
   describe 'users/show', type: :feature do
     before(:each) do
@@ -104,6 +103,5 @@ RSpec.describe 'users/index', type: :feature do
       click_link 'See all posts'
       expect(current_path).to match(user_posts_path(@first_user))
     end
-
   end
 end
