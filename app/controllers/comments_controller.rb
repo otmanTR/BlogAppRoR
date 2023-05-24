@@ -16,19 +16,19 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    @comment.post_id = params[:post_id]
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
     authorize! :destroy, @comment
 
     puts "Authorization successful"
 
-    if comment.destroy
+    if @comment.destroy
       flash[:success] = 'Comment deleted successfully.'
     else
       flash[:danger] = 'Comment could not be deleted.'
     end
 
-    redirect_to user_posts_path(current_user)
+    redirect_to user_posts_path(@post.author, @post)
   end
 
   private
