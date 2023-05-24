@@ -39359,3 +39359,54 @@ Started GET "/users/3/qweqweqweqweqwe" for ::1 at 2023-05-24 16:41:41 +0300
   
 ActionController::RoutingError (No route matches [GET] "/users/3/qweqweqweqweqwe"):
   
+Started GET "/users/3/posts/3" for ::1 at 2023-05-24 16:43:47 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"3", "id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 401 Unauthorized in 20ms (ActiveRecord: 4.3ms | Allocations: 9404)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-05-24 16:43:48 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.7ms | Allocations: 689)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 5.4ms | Allocations: 2456)
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | Allocations: 16222)
+Completed 200 OK in 22ms (Views: 21.0ms | ActiveRecord: 0.0ms | Allocations: 17983)
+
+
+Started POST "/users/sign_in" for ::1 at 2023-05-24 16:43:57 +0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"r.brk.otman@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "r.brk.otman@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 245ms (ActiveRecord: 0.6ms | Allocations: 2088)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-05-24 16:43:57 +0300
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 195)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1276)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 3473)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.0ms | Allocations: 4227)
+
+
+Started POST "/users/sign_in" for ::1 at 2023-05-24 16:44:02 +0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"r.brk.otman@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "r.brk.otman@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 255ms (ActiveRecord: 0.6ms | Allocations: 1762)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-05-24 16:44:02 +0300
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 195)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1276)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 3473)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.0ms | Allocations: 4179)
+
+

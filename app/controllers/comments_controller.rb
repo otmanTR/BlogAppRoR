@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     authorize! :destroy, @comment
 
-    puts "Authorization successful"
+    puts 'Authorization successful'
 
     if @comment.destroy
       flash[:success] = 'Comment deleted successfully.'
