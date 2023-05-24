@@ -21,6 +21,13 @@
         <%= form.submit 'Like Post' %>
     <% end %>
 </div>
+<% if can?(:destroy, @post)%>
+          <%= link_to user_post_path(@user, @post), data: {
+            turbo_method: :delete
+          } do %>
+            <button><%= t('.delete post') %></button>
+            <% end %>
+        <% end %>
    </div>
    <div class="comment">
    <% @post.comments.each do |comment| %>
