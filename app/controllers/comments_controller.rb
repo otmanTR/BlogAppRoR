@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  
   def index
     @posts = Post.find(params[:post_id])
     @user = User.find(params[:user_id])
@@ -7,10 +6,10 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render :json => @comments }
+      format.json { render json: @comments }
     end
   end
-  
+
   def new
     @comment = Comment.new
     @post = Post.find(params[:post_id])
@@ -26,14 +25,14 @@ class CommentsController < ApplicationController
         format.html { redirect_to user_post_path(@post.author, @post), notice: 'Comment created' }
         format.json { render json: @comment, status: :created }
       end
-      
+
     else
       respond_to do |format|
         format.html { render :new, alert: 'Comment not created!' }
         format.json { render json: @comment.errors, status: :unprocessable_entry }
+      end
     end
   end
-end
 
   def destroy
     @post = Post.find(params[:post_id])
