@@ -2,6 +2,11 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @user = User.find(params[:user_id])
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @posts }
+    end
   end
 
   def new
@@ -25,6 +30,11 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = User.find(params[:user_id])
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @post }
+    end
   end
 
   def destroy
