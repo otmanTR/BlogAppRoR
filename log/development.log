@@ -43014,3 +43014,20 @@ Processing by PostsController#show as TURBO_STREAM
 Completed 200 OK in 25ms (Views: 18.2ms | ActiveRecord: 1.0ms | Allocations: 11804)
 
 
+Started GET "/" for ::1 at 2023-05-25 19:27:58 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 401 Unauthorized in 77ms (ActiveRecord: 6.9ms | Allocations: 32217)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-05-25 19:27:58 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 3.1ms | Allocations: 1215)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 13.7ms | Allocations: 5257)
+  Rendered layout layouts/application.html.erb (Duration: 91.1ms | Allocations: 39692)
+Completed 200 OK in 106ms (Views: 100.4ms | ActiveRecord: 0.0ms | Allocations: 44259)
+
+
